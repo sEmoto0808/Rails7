@@ -4,10 +4,18 @@
   <!-- この中のRubyコードを評価する -->
   <% @articles.each do |article| %>
     <li>
-      <a href="/articles/<%= article.id %>">
-        <!-- この中のRubyコードを評価し、返された値を出力する -->
+      <!-- article_pathヘルパーは"/articles/#{article.id}"を返す
+      <a href="<%= article_path(article) %>">
+        # この中のRubyコードを評価し、返された値を出力する
         <%= article.title %>
       </a>
+      -->
+
+      <!--
+        link_toヘルパーの第1引数はリンクテキスト、第2引数はリンク先
+        第2引数にモデルオブジェクトを渡すと、link_toが適切なパスヘルパーを呼び出してオブジェクトをパスに変換
+      -->
+      <%= link_to article.title, article %>
     </li>
   <% end %>
 </ul>
