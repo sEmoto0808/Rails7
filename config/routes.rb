@@ -5,4 +5,7 @@ Rails.application.routes.draw do
   root "articles#index"
 
   get "/articles", to: "articles#index"
+
+  # リクエストのパスに含まれる特定の値をキャプチャして、その値を [params] というハッシュに保存
+  get "/articles/:id", to: "articles#show"
 end

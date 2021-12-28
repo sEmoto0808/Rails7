@@ -4,8 +4,10 @@
   <!-- この中のRubyコードを評価する -->
   <% @articles.each do |article| %>
     <li>
-      <!-- この中のRubyコードを評価し、返された値を出力する -->
-      <%= article.title %>
+      <a href="/articles/<%= article.id %>">
+        <!-- この中のRubyコードを評価し、返された値を出力する -->
+        <%= article.title %>
+      </a>
     </li>
   <% end %>
 </ul>
