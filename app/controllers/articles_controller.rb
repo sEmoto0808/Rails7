@@ -54,6 +54,14 @@ class ArticlesController < ApplicationController
     end
   end
 
+  # 記事を削除する
+  def destroy
+    @article = Article.find(params[:id])
+    @article.destroy
+
+    redirect_to root_path
+  end
+
   # Strong Parametersを使う（強く型付けする）
   private
     def article_params
