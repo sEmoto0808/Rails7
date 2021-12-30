@@ -38,6 +38,22 @@ class ArticlesController < ApplicationController
     end
   end
 
+  # 記事を更新する
+  def edit
+    @article = Article.find(params[:id])
+  end
+
+  # 記事を更新する
+  def update
+    @article = Article.find(params[:id])
+
+    if @article.update(article_params)
+      redirect_to @article
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   # Strong Parametersを使う（強く型付けする）
   private
     def article_params
