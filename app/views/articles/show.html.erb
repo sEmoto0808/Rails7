@@ -7,18 +7,14 @@
   <li><%= button_to "Delete Article", { id: @article.id }, method: :delete %>
 </ul>
 
+<!--
+  パーシャルを使ってリファクタリング
+  renderメソッドが@article.commentsコレクションに含まれる要素を1つ1つ列挙するときに、
+  各コメントをパーシャルと同じ名前のローカル変数に自動的に割り当てます。
+  この場合はcommentというローカル変数が使われ、パーシャルの表示に利用されます
+-->
 <h2>Comments</h2>
-<% @article.comments.each do |comment| %>
-  <p>
-    <strong>Commenter:</strong>
-    <%= comment.commenter %>
-  </p>
-
-  <p>
-    <strong>Comment:</strong>
-    <%= comment.body %>
-  </p>
-<% end %>
+<%= render @article.comments %>
 
 <h2>Add a comment:</h2>
 <!-- 配列を渡すと、/articles/1/commentsのような「ネストしたルーティング（nested route）」を生成します -->
