@@ -11,11 +11,14 @@
       </a>
       -->
 
-      <!--
-        link_toヘルパーの第1引数はリンクテキスト、第2引数はリンク先
-        第2引数にモデルオブジェクトを渡すと、link_toが適切なパスヘルパーを呼び出してオブジェクトをパスに変換
-      -->
-      <%= link_to article.title, article %>
+
+      <% unless article.archived? %>
+        <!--
+          link_toヘルパーの第1引数はリンクテキスト、第2引数はリンク先
+          第2引数にモデルオブジェクトを渡すと、link_toが適切なパスヘルパーを呼び出してオブジェクトをパスに変換
+        -->
+        <%= link_to article.title, article %>
+      <% end %>
     </li>
   <% end %>
 

@@ -9,6 +9,14 @@ class Article < ApplicationRecord
   # bodyの値には文字が10個以上含まれていなければならない
   validates :body, presence: true, length: { minimum: 10 }
 
+  VALID_STATUSES = [ 'public', 'private', 'archived']
+
+  validates :status, inclusion: { in: VALID_STATUSES }
+
+  def archived?
+    status == 'archived'
+  end
+
   # NOTE:
   # Active Recordは、テーブルのあらゆるカラムごとにモデル属性を自動的に定義するので、
   # モデルファイル内でこれらの属性を宣言する必要はありません。
