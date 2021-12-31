@@ -1,4 +1,7 @@
 class Article < ApplicationRecord
+  # 1件の記事はコメントを複数持てる（One article can have many comments）
+  has_many :comments
+
   # バリデーション
   # titleの値が必ず存在しなければならない
   validates :title, presence: true
