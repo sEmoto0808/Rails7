@@ -1,0 +1,14 @@
+<!-- 配列を渡すと、/articles/1/commentsのような「ネストしたルーティング（nested route）」を生成します -->
+<%= form_with model: [ @article, @article.comments.build ] do |form| %>
+  <p>
+    <%= form.label :commenter %><br>
+    <%= form.text_field :commenter %>
+  </p>
+  <p>
+    <%= form.label :body %>
+    <%= form.text_area :body %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
