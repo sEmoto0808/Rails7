@@ -11,5 +11,9 @@ Rails.application.routes.draw do
 
   # リソースフルルーティング
   # リソースのコレクション（collection: 集まり）を対応付けるのによく使われるルーティングをすべて対応付けてくれる
-  resources :articles
+  resources :articles do
+    # この設定により、articlesの内側にネストされたリソース（nested resource）としてcommentsが作成されます
+    # これは、モデルの記述とは別の視点から、記事とコメントの間のリレーションシップを階層的に捉えたものです
+    resources :comments
+  end
 end
