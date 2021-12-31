@@ -1,4 +1,7 @@
 class Article < ApplicationRecord
+  # concernで共通化
+  include Visible
+
   # 1件の記事はコメントを複数持てる（One article can have many comments）
   has_many :comments
 
@@ -8,14 +11,6 @@ class Article < ApplicationRecord
   # bodyの値が存在しなければならない
   # bodyの値には文字が10個以上含まれていなければならない
   validates :body, presence: true, length: { minimum: 10 }
-
-  VALID_STATUSES = [ 'public', 'private', 'archived']
-
-  validates :status, inclusion: { in: VALID_STATUSES }
-
-  def archived?
-    status == 'archived'
-  end
 
   # NOTE:
   # Active Recordは、テーブルのあらゆるカラムごとにモデル属性を自動的に定義するので、
