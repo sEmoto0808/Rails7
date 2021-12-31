@@ -7,6 +7,19 @@
   <li><%= button_to "Delete Article", { id: @article.id }, method: :delete %>
 </ul>
 
+<h2>Comments</h2>
+<% @article.comments.each do |comment| %>
+  <p>
+    <strong>Commenter:</strong>
+    <%= comment.commenter %>
+  </p>
+
+  <p>
+    <strong>Comment:</strong>
+    <%= comment.body %>
+  </p>
+<% end %>
+
 <h2>Add a comment:</h2>
 <!-- 配列を渡すと、/articles/1/commentsのような「ネストしたルーティング（nested route）」を生成します -->
 <%= form_with model: [ @article, @article.comments.build ] do |form| %>
