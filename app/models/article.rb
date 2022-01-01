@@ -3,7 +3,8 @@ class Article < ApplicationRecord
   include Visible
 
   # 1件の記事はコメントを複数持てる（One article can have many comments）
-  has_many :comments
+  # dependent: :destroy -> 記事を削除したら、その記事に紐づくコメントも削除
+  has_many :comments, dependent: :destroy
 
   # バリデーション
   # titleの値が必ず存在しなければならない
