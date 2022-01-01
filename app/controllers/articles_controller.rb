@@ -1,5 +1,9 @@
 class ArticlesController < ApplicationController
 
+  # Basic認証
+  # indexアクションとshowアクションは自由にアクセスできるようにし、それ以外のアクションには認証を要求するようにする
+  http_basic_authenticate_with name: "dhh", password: "secret", except: [:index, :show]
+
   # 記事のリストを表示する
   def index
     # コントローラ内のインスタンス変数はビューからも参照できる
