@@ -10,6 +10,16 @@ class CommentsController < ApplicationController
     redirect_to article_path(@article)
   end
 
+  # コメントを削除する
+  def destroy
+    # まずどの記事が対象であるかを検索して@articleに保存し
+    @article = Article.find(params[:article_id])
+    # @article.commentsコレクションの中のどのコメントが対象であるかを特定して@commentに保存します
+    @comment = @article.comments.find(params[:id])
+    @comment.destroy
+    redirect_to article_path(@article)
+  end
+
   private
     def comment_params
       params.require(:comment).permit(:commenter, :body, :status)

@@ -8,4 +8,11 @@
     <strong>Comment:</strong>
     <%= comment.body %>
   </p>
+
+  <!--
+    「Destroy Comment」ボタンをクリックすると、DELETE /articles/:article_id/comments/:idというリクエストがCommentsControllerに送信されます
+  -->
+  <p>
+    <%= button_to "Destroy Comment", [comment.article, comment], method: :delete %>
+  </p>
 <% end %>
